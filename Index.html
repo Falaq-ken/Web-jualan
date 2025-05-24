@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KEDAI MELETUPZ</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .show {
+      display: block !important;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo-box">
+        <img src="WhatsApp Image 2025-05-23 at 09.00.44.jpeg" alt="Logo" class="logo-img" />
+        <h1 class="logo-text">KEDAI MELETUPZ</h1>
+      </div>
+      <div class="menu-toggle">&#9776;</div>
+    </div>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#social">Sosial Media</a></li>
+    </ul>
+  </nav>
+
+  <div class="products">
+    <div class="product-card">
+      <img src="https://assets.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/indizone/2020/03/30/1xsOPA/t_5e81f00c4785f.jpg" />
+      <h2>Bakso Mercon meletupz</h2>
+      <p>Harga: Rp. 10.000</p>
+      <label for="jumlah">Jumlah:</label>
+      <select id="jumlah"></select>
+      <br>
+      <button type="button" id="tambah-btn">Simpan ke keranjang</button>
+    </div>
+  </div>
+
+  <div class="cart">
+    <h2>Keranjang Belanja</h2>
+    <ul id="keranjang-list">
+      <li>Keranjang kosong</li>
+    </ul>
+    <p id="total-harga">Total: Rp. 0</p>
+<p class="note-cod">*Pembayaran cuman bisa via COD</p>
+    <button type="button" class="checkout-btn" id="checkout-btn">Checkout via WhatsApp</button>
+  </div>
+
+  <section id="about" class="info-section">
+    <h2>Tentang Kami</h2>
+    <p>Bakso mercon kita ini polos tanpa isian mengandalkan kekuatan sambalnya yang meletup-meletup. Tanpa kuah, bakso disajikan kering dengan siraman sambal merah menyala yang dipadukan daun jeruk, bawang putih cincang, dan rempah pilihan. Rasanya pedas, harum, dan nendang cukup satu gigitan buat bikin lidah kebakar dan mata berkaca-kaca. Cocok buat yang cari sensasi pedas tanpa basa-basi!
+    </p>
+  </section>
+
+  <section id="social" class="info-section">
+    <h2>Ikuti Kami</h2>
+    <div class="social-buttons">
+      <a href="https://www.instagram.com/merconrpl2/?igsh=Z3NqMXE4MHlpN3M0#" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@merconzrpl2_?_t=ZS-8waqDAiW35G&_r=1" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok" /></a>
+      <a href="https://wa.me/6285719262088" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" /></a>
+      <a href="https://youtube.com/@baksomerconmeletupz?si=f0UlMHJ5ksezwGL2" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" /></a>
+      <a href="https://id.shp.ee/9SCbtSD" target="_blank"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx0O0G4BRkQWADku5QXSxL1Ze5xar8AG4Rna8QsAqr7PcWuTNBl7D5Dsw&s=10" alt="Shopee" /></a>
+      <a href="https://www.facebook.com/share/1A3xP6yQm1/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const hargaProduk = 10000;
+      const keranjang = [];
+
+      const navMenu = document.getElementById("nav-menu");
+      const menuToggle = document.querySelector(".menu-toggle");
+      menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+      });
+
+      const selectJumlah = document.getElementById("jumlah");
+      for (let i = 1; i <= 20; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        selectJumlah.appendChild(option);
+      }
+
+      document.getElementById("tambah-btn").addEventListener("click", function () {
+        const jumlah = parseInt(selectJumlah.value);
+        const total = hargaProduk * jumlah;
+        keranjang.push({ nama: "Bakso Mercon", jumlah, total });
+        renderKeranjang();
+      });
+
+      function renderKeranjang() {
+        const list = document.getElementById("keranjang-list");
+        const totalText = document.getElementById("total-harga");
+        list.innerHTML = "";
+        let grandTotal = 0;
+
+        if (keranjang.length === 0) {
+          list.innerHTML = "<li>Keranjang kosong</li>";
+        } else {
+          keranjang.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = `${item.nama} x${item.jumlah} – Rp. ${item.total.toLocaleString()}`;
+            list.appendChild(li);
+            grandTotal += item.total;
+          });
+        }
+
+        totalText.textContent = `Total: Rp. ${grandTotal.toLocaleString()}`;
+      }
+
+      document.getElementById("checkout-btn").addEventListener("click", function () {
+  if (keranjang.length === 0) {
+    alert("Keranjang masih kosong!");
+    return;
+  }
+
+  let pesan = "*Pesanan dari KEDAI MELETUPZ*\n\n====================\n*Daftar Pesanan:*\n";
+  let total = 0;
+  keranjang.forEach(item => {
+    pesan += `- ${item.nama} x${item.jumlah} — Rp${item.total.toLocaleString()}\n`;
+    total += item.total;
+  });
+  pesan += `====================\n*Total Pembayaran:* Rp${total.toLocaleString()}\n\nTerima kasih udah pesen!\nKami secepet mungkin hubungi kamu.`;
+
+  const url = "https://wa.me/6285719262088?text=" + encodeURIComponent(pesan);
+  window.open(url, "_blank");
+});
+    });
+  </script>
+
+</body>
+</html>
