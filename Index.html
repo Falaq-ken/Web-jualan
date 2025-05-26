@@ -116,7 +116,12 @@
 
       document.getElementById("checkout-btn").addEventListener("click", function () {
   if (keranjang.length === 0) {
-    alert("Keranjang masih kosong!");
+    Swal.fire({
+                title: "Gak bisa pesan!",
+                text: "keranjang mu masih kosong! isi dulu",
+                icon: "error",
+              });
+
     return;
   }
 
@@ -133,6 +138,8 @@
 });
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </body>
 </html>
