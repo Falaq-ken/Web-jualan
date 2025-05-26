@@ -74,7 +74,7 @@
       const menuToggle = document.querySelector(".menu-toggle");
       const navMenu = document.getElementById("nav-menu");
 
-      // Isi opsi jumlah dari 1 sampai 20
+     
       for (let i = 1; i <= 20; i++) {
         const option = document.createElement("option");
         option.value = i;
@@ -82,12 +82,11 @@
         selectJumlah.appendChild(option);
       }
 
-      // Toggle menu mobile
+   
       menuToggle.addEventListener("click", () => {
         navMenu.classList.toggle("show");
       });
 
-      // Checkout via WhatsApp langsung
       document.getElementById("checkout-btn").addEventListener("click", function () {
         const jumlah = parseInt(selectJumlah.value);
         if (jumlah < 1) {
@@ -106,4 +105,3 @@
 
 </body>
 </html>
-
