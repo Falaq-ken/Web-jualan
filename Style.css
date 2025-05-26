@@ -6,7 +6,6 @@ body {
   line-height: 1.6;
 }
 
-/* Navbar */
 .navbar {
   background-color: #b71c1c;
   color: white;
@@ -32,14 +31,14 @@ body {
 }
 
 .logo-img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 8px;
   object-fit: cover;
 }
 
 .logo-text {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 2px;
   user-select: none;
@@ -88,7 +87,7 @@ body {
   color: #ffcdd2;
 }
 
-/* Desktop navbar */
+
 @media (min-width: 768px) {
   .menu-toggle {
     display: none;
@@ -111,7 +110,6 @@ body {
   }
 }
 
-/* Products grid */
 .products {
   max-width: 1200px;
   margin: 30px auto;
@@ -190,7 +188,7 @@ button:hover {
   font-size: 16px;
 }
 
-/* Info sections */
+
 .info-section {
   max-width: 1200px;
   margin: 50px auto 70px auto;
@@ -210,7 +208,7 @@ button:hover {
   letter-spacing: 1.5px;
 }
 
-/* Social buttons */
+
 .social-buttons {
   display: flex;
   justify-content: center;
@@ -240,7 +238,6 @@ button:hover {
   filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));
 }
 
-/* Responsive paddings */
 @media (max-width: 767px) {
   .info-section {
     margin: 40px 15px;
